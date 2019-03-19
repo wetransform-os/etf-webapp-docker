@@ -82,6 +82,16 @@ ENV HTTPS_PROXY_USERNAME none
 ENV HTTPS_PROXY_PASSWORD none
 
 #
+# Add build info - see hooks/build and https://github.com/opencontainers/image-spec/blob/master/annotations.md
+#
+ARG BUILD_DATE
+ARG VCS_REF
+ARG VCS_URL
+LABEL org.opencontainers.image.created=$BUILD_DATE \
+  org.opencontainers.image.source=$VCS_URL \
+  org.opencontainers.image.revision=$VCS_REF
+
+#
 # Initialize image (download ETF and plugins)
 #
 
