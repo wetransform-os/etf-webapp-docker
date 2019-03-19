@@ -6,6 +6,10 @@ LABEL Name="etf-webapp" Description="Testing framework for spatial data and serv
 
 EXPOSE 8080
 
+#
+# Image build time configuration
+#
+
 ENV ETF_DIR /etf
 ENV ETF_LOG_DIR /etf/logs
 
@@ -35,10 +39,14 @@ ENV ETF_TESTDRIVER_SUI_VERSION latest
 # Packed with the Webapp
 ENV ETF_TESTDRIVER_TE_VERSION latest
 
-# Default repository configuration
+# Default repository configuration (where software artifacts are downloaded from)
 ENV REPO_URL https://services.interactive-instruments.de/etfdev-af/etf-public-dev
 ENV REPO_USER etf-public-dev
 ENV REPO_PWD etf-public-dev
+
+#
+# Runtime configuration
+#
 
 # Possible values: “none” or URL to ZIP file
 ENV ETF_DL_TESTPROJECTS_ZIP https://github.com/inspire-eu-validation/ets-repository/archive/master.zip
@@ -73,8 +81,21 @@ ENV HTTPS_PROXY_USERNAME none
 # Optional password for authenticating against HTTP Secure proxy server or "none"
 ENV HTTPS_PROXY_PASSWORD none
 
-RUN mv /docker-entrypoint.bash /docker-entrypoint-jetty.bash
-COPY res/docker-entrypoint.sh /
+#
+# Initialize image (download ETF and plugins)
+#
 
+USER root
+# Backup original entrypoint
+RUN mv /docker-entrypoint.sh /docker-entrypoint-jetty.sh
+# Copy scripts
+COPY res/ /
+# Run init script
+RUN /docker-init.sh
+
+USER jetty
+
+# Configure entrypoint
+# Also download testprojects if configured
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["java","-jar","/usr/local/jetty/start.jar"]
