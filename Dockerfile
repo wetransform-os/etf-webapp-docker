@@ -17,27 +17,32 @@ ENV ETF_RELATIVE_URL etf-webapp
 
 # Possible values: “latest”, <version as MAJOR.MINOR.BUGFIX> e.g. “2.0.0” or
 # <version as MAJOR.MINOR> e.g. “1.0” to get the latest bugfix version
-ENV ETF_WEBAPP_VERSION latest
+# see https://github.com/etf-validator/etf-webapp
+ENV ETF_WEBAPP_VERSION 2.0
 
 # Possible values: “latest”, <version as MAJOR.MINOR.BUGFIX> or
 # <version as MAJOR.MINOR>
 # Packed with the Webapp
-ENV ETF_TESTDRIVER_BSX_VERSION latest
+# see https://github.com/etf-validator/etf-bsxtd
+ENV ETF_TESTDRIVER_BSX_VERSION 2.0
 
 # Possible values: “latest”, <version as MAJOR.MINOR.BUGFIX> or
 # <version as MAJOR.MINOR>
 # Will be downloaded
-ENV ETF_GMLGEOX_VERSION latest
+# see https://github.com/etf-validator/etf-gmlgeox
+ENV ETF_GMLGEOX_VERSION 1.2
 
 # Possible values: “latest”, <version as MAJOR.MINOR.BUGFIX> or
 # <version as MAJOR.MINOR>
 # Packed with the Webapp
-ENV ETF_TESTDRIVER_SUI_VERSION latest
+# see https://github.com/etf-validator/etf-suitd
+ENV ETF_TESTDRIVER_SUI_VERSION 2.0
 
 # Possible values: “latest”, <version as MAJOR.MINOR.BUGFIX> or
 # <version as MAJOR.MINOR>
 # Packed with the Webapp
-ENV ETF_TESTDRIVER_TE_VERSION latest
+# see https://github.com/etf-validator/etf-tetd
+ENV ETF_TESTDRIVER_TE_VERSION 1.0
 
 # Default repository configuration (where software artifacts are downloaded from)
 ENV REPO_URL https://services.interactive-instruments.de/etfdev-af/etf-public-dev
