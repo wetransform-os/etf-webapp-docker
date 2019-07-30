@@ -86,7 +86,7 @@ fi
 # Download Webapp
 if [ ! -f "$appServerDeplPath/$ETF_RELATIVE_URL".war ]; then
     echo "Downloading ETF. This may take a while..."
-    get de/interactive_instruments/etf/etf-webapp etf-webapp-[0-9\.]+.war "$ETF_WEBAPP_VERSION" "$appServerDeplPath/$ETF_RELATIVE_URL".war
+    getFrom ${REPO_URL}/de/interactive_instruments/etf/etf-webapp/etf-webapp-${ETF_WEBAPP_VERSION}.war "$appServerDeplPath/$ETF_RELATIVE_URL".war
 fi
 
 # Download BaseX test driver
@@ -95,14 +95,14 @@ if [[ -n "$ETF_TESTDRIVER_BSX_VERSION" && "$ETF_TESTDRIVER_BSX_VERSION" != "none
     echo "Using existing BSX test driver, skipping download"
   else
     echo "Downloading BSX test driver"
-    get de/interactive_instruments/etf/testdriver/etf-bsxtd/ etf-bsxtd-[0-9\.]+.jar "$ETF_TESTDRIVER_BSX_VERSION" /tmp/etf-bsxtd.jar
+    getFrom ${REPO_URL}/de/interactive_instruments/etf/testdriver/etf-bsxtd/etf-bsxtd-${ETF_TESTDRIVER_BSX_VERSION}.jar /tmp/etf-bsxtd.jar
     mv /tmp/etf-bsxtd.jar "$ETF_DIR"/td
   fi
 fi
 
 # Download GmlGeoX
 if [[ ! -f "$ETF_DIR"/ds/db/repo/de/interactive_instruments/etf/bsxm/GmlGeoX.jar && -n "$ETF_GMLGEOX_VERSION" && "$ETF_GMLGEOX_VERSION" != "none" ]]; then
-  get de/interactive_instruments/etf/bsxm/etf-gmlgeox/ etf-gmlgeox-[0-9\.]+.jar "$ETF_GMLGEOX_VERSION" /tmp/GmlGeoX.jar
+  getFrom ${REPO_URL}/de/interactive_instruments/etf/testdriver/etf-gmlgeox/etf-gmlgeox-${ETF_GMLGEOX_VERSION}.jar /tmp/GmlGeoX.jar
   mkdir -p "$ETF_DIR"/ds/db/repo/de/interactive_instruments/etf/bsxm/
   mv /tmp/GmlGeoX.jar "$ETF_DIR"/ds/db/repo/de/interactive_instruments/etf/bsxm/
 fi
@@ -113,7 +113,7 @@ if [[ -n "$ETF_TESTDRIVER_SUI_VERSION" && "$ETF_TESTDRIVER_SUI_VERSION" != "none
     echo "Using existing SUI test driver, skipping download"
   else
     echo "Downloading SUI test driver"
-    get de/interactive_instruments/etf/testdriver/etf-suitd/ etf-suitd-[0-9\.]+.jar "$ETF_TESTDRIVER_SUI_VERSION" /tmp/etf-suitd.jar
+    getFrom ${REPO_URL}/de/interactive_instruments/etf/testdriver/etf-suitd/etf-suitd-${ETF_TESTDRIVER_SUI_VERSION}.jar /tmp/etf-suitd.jar
     mv /tmp/etf-suitd.jar "$ETF_DIR"/td
   fi
 fi
@@ -124,7 +124,7 @@ if [[ -n "$ETF_TESTDRIVER_TE_VERSION" && "$ETF_TESTDRIVER_TE_VERSION" != "none" 
     echo "Using existing TE test driver, skipping download"
   else
     echo "Downloading TE test driver"
-    get de/interactive_instruments/etf/testdriver/etf-tetd/ etf-tetd-[0-9\.]+.jar "$ETF_TESTDRIVER_TE_VERSION" /tmp/etf-tetd.jar
+    getFrom ${REPO_URL}/de/interactive_instruments/etf/testdriver/etf-tetd/etf-tetd-${ETF_TESTDRIVER_TE_VERSION}.jar /tmp/etf-tetd.jar
     mv /tmp/etf-tetd.jar "$ETF_DIR"/td
   fi
 fi

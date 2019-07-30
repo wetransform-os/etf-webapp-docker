@@ -15,34 +15,25 @@ ENV ETF_LOG_DIR /etf/logs
 
 ENV ETF_RELATIVE_URL etf-webapp
 
-# Possible values: “latest”, <version as MAJOR.MINOR.BUGFIX> e.g. “2.0.0” or
-# <version as MAJOR.MINOR> e.g. “1.0” to get the latest bugfix version
-ENV ETF_WEBAPP_VERSION latest
+# Possible values for *_VERSION:
+# <version as MAJOR.MINOR.BUGFIX> e.g. “2.0.0” or
+# <version as MAJOR.MINOR.BUGFIX-SNAPSHOT> e.g. “1.0.0-SNAPSHOT” to get the latest snapshot version
+ENV ETF_WEBAPP_VERSION next
 
-# Possible values: “latest”, <version as MAJOR.MINOR.BUGFIX> or
-# <version as MAJOR.MINOR>
 # Packed with the Webapp
-ENV ETF_TESTDRIVER_BSX_VERSION latest
+ENV ETF_TESTDRIVER_BSX_VERSION 2.0.1-SNAPSHOT
 
-# Possible values: “latest”, <version as MAJOR.MINOR.BUGFIX> or
-# <version as MAJOR.MINOR>
 # Will be downloaded
-ENV ETF_GMLGEOX_VERSION latest
+ENV ETF_GMLGEOX_VERSION 1.2.2-SNAPSHOT
 
-# Possible values: “latest”, <version as MAJOR.MINOR.BUGFIX> or
-# <version as MAJOR.MINOR>
 # Packed with the Webapp
-ENV ETF_TESTDRIVER_SUI_VERSION latest
+ENV ETF_TESTDRIVER_SUI_VERSION 2.0.1-SNAPSHOT
 
-# Possible values: “latest”, <version as MAJOR.MINOR.BUGFIX> or
-# <version as MAJOR.MINOR>
 # Packed with the Webapp
-ENV ETF_TESTDRIVER_TE_VERSION latest
+ENV ETF_TESTDRIVER_TE_VERSION 1.0.1-SNAPSHOT
 
 # Default repository configuration (where software artifacts are downloaded from)
-ENV REPO_URL https://services.interactive-instruments.de/etfdev-af/etf-public-dev
-ENV REPO_USER etf-public-dev
-ENV REPO_PWD etf-public-dev
+ENV REPO_URL http://build-artifacts.wetransform.to.s3-eu-central-1.amazonaws.com/travisci/etf-public-dev
 
 #
 # Runtime configuration
